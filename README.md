@@ -47,6 +47,6 @@ Os exemplos estão localizados na pasta examples, sendo que um deles "error.mi" 
 Bugs e demais sugestões, por favor abrir uma issue.
 
 ## Anexos
-![Autômato do analisador léxico](./anexos/lexico/automato.pdf)
+[Autômato do analisador léxico](./anexos/lexico/automato.pdf)
 
-![Manual da linguagem](https://docs.google.com/document/d/1bcNnKXO9i62Fyuse_SmdwwGpHy4--Ie4bkY0piCljQc/edit?usp=sharing)
+[Manual da linguagem](https://docs.google.com/document/d/1bcNnKXO9i62Fyuse_SmdwwGpHy4--Ie4bkY0piCljQc/edit?usp=sharing)
