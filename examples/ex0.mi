@@ -1,0 +1,30 @@
+void main {  
+	idade , infn : integer ;
+	classif : string ;
+	string classifica ( integer ) {
+			$1 : integer ;
+	clasf_etaria : string ;
+	inicio
+	if ( $1 <= 14 ) {
+					clasf_etaria = "crianca" ;
+	}
+	else {
+					if ( $1 <= 21 ) {
+						clasf_etaria = "adolescente" ;
+					}
+					else {
+						clasf_etaria = "adulto" ;
+					} ;
+	} ;
+	fim
+	return ( class_etaria )
+	}
+	inicio
+	infn = 1 ;
+	while ( infn == 1 ) {
+				cin >> age ;
+				classif = callfuncao classifica ( age ) ;
+				cout << ~classificação etária: ~ << classif ;
+	} ;
+	fim
+}
