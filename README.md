@@ -18,10 +18,12 @@ git clone https://github.com/mihazs/mi-language.git
 3) Abra a linha de comando, navegue até a pasta aonde o projeto foi clonado e digite:
 
 ```bash
+npm i -g yarn
+yarn
 node ./dist/index.js --help
 ```
 
-A saída deverá ser parecida com:
+A saída do último comando deverá ser parecida com:
 
 ```text
 Usage: index [options] <arquivo>
