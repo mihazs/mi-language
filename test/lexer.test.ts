@@ -1,6 +1,7 @@
 import lexer from "../src/lexer";
 import { read } from "../src/file";
 import path from "path";
+import { tokens } from "../src/lexer/tokens";
 describe("Análise Léxica", () => {
   it("declaração de programa", function () {
     lexer.reset(`void main() {
@@ -53,7 +54,6 @@ describe("Análise Léxica", () => {
     const code = read(path.resolve("examples/ex0.mi"));
     lexer.reset(code);
     const arr = Array.from(lexer);
-    console.log(arr);
   });
   it("deve analisar o exemplo 1 sem erros", () => {
     const code = read(path.resolve("examples/ex1.mi"));
@@ -62,6 +62,18 @@ describe("Análise Léxica", () => {
   });
   it("deve analisar o exemplo 2 sem erros", () => {
     const code = read(path.resolve("examples/ex2.mi"));
+    lexer.reset(code);
+    const arr = Array.from(lexer);
+  });
+  it("deve remover o elemento do array como uma fila", () => {
+    const code = read(path.resolve("examples/ex0.mi"));
+    lexer.reset(code);
+    const arr = Array.from(lexer);
+    lexer.reset(code);
+    expect(arr.shift()).toStrictEqual(lexer.next());
+  });
+  it("deve retornar o número de início e fim das localizações", () => {
+    const code = read(path.resolve("examples/ex0.mi"));
     lexer.reset(code);
     const arr = Array.from(lexer);
   });

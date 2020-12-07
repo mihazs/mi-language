@@ -1,7 +1,9 @@
-void main() {
-    	i : integer;
+void main {
+    i : integer;
+	inicio
 	i = 0;
 	for(i=0; i < 10; ++1) {
-		cout << i;
-	}
+		cout << ~i~;
+	};
+	fim
 }

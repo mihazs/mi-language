@@ -2,6 +2,7 @@ import program from "commander";
 import { read, write } from "./file";
 import { compile } from "./compiler";
 import { tokens } from "./lexer";
+import { parser } from "./parser";
 import path from "path";
 program
   .version("0.1.0")
@@ -16,14 +17,21 @@ program
     const code = read(path.resolve(arquivo));
     const result = compile(code);
     let output = "";
-    if (options.lex) {
+    if (options?.lex) {
       output += `lex result\n\n${JSON.stringify(
         result.lex.map((k) => ({
           linha: k.line,
-          codigo: k.type == "nomevariavel" ? tokens?.nomevariavel : k?.type in tokens ? tokens[k.type] : tokens[k.value],
+          codigo: k.type == "nomevariavel" ? tokens.nomevariavel : k?.type in tokens ? tokens[k.type] : tokens[k.value],
           lexema: k.value,
         }))
       )}\n\n`;
+    }
+    if (options?.syntax) {
+      try {
+        parser.parse(code);
+      } catch (e) {
+        console.log(e);
+      }
     }
     /* console.log(options.write);
         if(options.write){

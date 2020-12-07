@@ -1,6 +1,9 @@
-void main(){
-	i=0;
-	if (nota == 10){
-		i=i++;
-	}
+void main {
+	i : integer;
+	inicio
+	i = 0;
+	if (i == 0){
+		i=2;
+	};
+	fim
 }

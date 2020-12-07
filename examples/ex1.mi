@@ -1,11 +1,13 @@
-void main() {
+void main {
 	x,y,z: integer;
+	inicio
 	x = 2;
 	y = 4;
 	z = soma(x, y);
-	integer soma(integer ; integer) {
+	integer soma(integer; integer) {
 		inicio
-			return x + y;
 		fim
+		return x + y;
 	}
+	fim
 }

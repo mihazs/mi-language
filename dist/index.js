@@ -2,6 +2,7 @@
 var _file = require('./file');
 var _compiler = require('./compiler');
 var _lexer = require('./lexer');
+var _parser = require('./parser');
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 _commander2.default
   .version("0.1.0")
@@ -16,14 +17,21 @@ _commander2.default
     const code = _file.read.call(void 0, _path2.default.resolve(arquivo));
     const result = _compiler.compile.call(void 0, code);
     let output = "";
-    if (options.lex) {
+    if (_optionalChain([options, 'optionalAccess', _ => _.lex])) {
       output += `lex result\n\n${JSON.stringify(
         result.lex.map((k) => ({
           linha: k.line,
-          codigo: k.type == "nomevariavel" ? _optionalChain([_lexer.tokens, 'optionalAccess', _ => _.nomevariavel]) : _optionalChain([k, 'optionalAccess', _2 => _2.type]) in _lexer.tokens ? _lexer.tokens[k.type] : _lexer.tokens[k.value],
+          codigo: k.type == "nomevariavel" ? _lexer.tokens.nomevariavel : _optionalChain([k, 'optionalAccess', _2 => _2.type]) in _lexer.tokens ? _lexer.tokens[k.type] : _lexer.tokens[k.value],
           lexema: k.value,
         }))
       )}\n\n`;
+    }
+    if (_optionalChain([options, 'optionalAccess', _3 => _3.syntax])) {
+      try {
+        _parser.parser.parse(code);
+      } catch (e) {
+        console.log(e);
+      }
     }
     /* console.log(options.write);
         if(options.write){

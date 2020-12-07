@@ -11,5 +11,5 @@ lexer.next = ((next) => () => {
 })(lexer.next);
 
 export { tokens } from "./tokens";
-
+export * as syntaxTokenizer from "./syntax-tokenizer";
 export default lexer;
