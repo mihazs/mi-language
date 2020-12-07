@@ -26,6 +26,7 @@ describe("Parser", () => {
   it("should not parse error example", () => {
     const code = read(path.resolve("examples/error.mi"));
     const psr = parser.setTokenizer(tokenizer);
+    psr.parse(code);
     expect(() => psr.parse(code)).toThrowError(SyntaxError);
   });
 });

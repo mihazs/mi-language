@@ -22,14 +22,16 @@ class Tokenizer {constructor() { Tokenizer.prototype.__init.call(this);Tokenizer
   }
    throwUnexpectedToken(symbol, line, column) {
     const lineSource = this.str.split("\n")[line - 1];
+    const spaceSize = lineSource.match(/^\s/m);
+    const realColumn = column + (spaceSize ? spaceSize.length : 0);
     let lineData = "";
 
     if (lineSource) {
-      const pad = " ".repeat(column);
+      const pad = " ".repeat(realColumn - 1);
       lineData = "\n\n" + lineSource + "\n" + pad + "^\n";
     }
 
-    throw new SyntaxError(`${lineData}Unexpected token: "${symbol}" ` + `at ${line}:${column}.`);
+    throw new SyntaxError(`${lineData}Unexpected token: "${symbol}" ` + `at ${line}:${realColumn}.`);
   }
    __init3() {this.hasMoreTokens = () => this.tokens.length != 0}
    getNextToken() {
@@ -42,8 +44,8 @@ class Tokenizer {constructor() { Tokenizer.prototype.__init.call(this);Tokenizer
         token.type == "nomevariavel" ? _tokens.tokens.nomevariavel : _optionalChain([token, 'optionalAccess', _ => _.type]) in _tokens.tokens ? _tokens.tokens[token.type] : _tokens.tokens[token.value]
       }`,
       value: token.value,
-      startColumn: token.col - 1,
-      endColumn: token.col + token.text.length - 1,
+      startColumn: token.col,
+      endColumn: token.col + token.text.length,
       startLine: token.line,
       endLine: token.line,
       startOffset: token.offset,
